@@ -71,7 +71,7 @@ def play_shoe():
 
 	#shuffled and ready to go
 	#discard the first bdeck[0] number of cards
-	card_limit = 24
+	card_limit = 6
 	bdeck = bdeck[bdeck[0]+1:]
 	while len(bdeck) > card_limit:
 		player = bdeck[0:1]
