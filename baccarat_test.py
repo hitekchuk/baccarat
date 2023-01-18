@@ -6,7 +6,7 @@ from math import *
 global game_type
 game_type="standard"
 global TIE
-TIE= 0
+TIE = 0
 global PLAYER_WIN
 PLAYER_WIN = 1
 global BANKER_WIN
@@ -15,10 +15,12 @@ global PANDA
 PANDA = 3
 global DRAGON
 DRAGON = 4
+global NATURALS
+NATURALS = 5
 no_games = 1000000
 
 def usage():
-	print "Usage: python baccarat_test.py [-t|--type EZ|standard (default)] [-g|--games <# games> (1M default)]. "
+	print("Usage: python baccarat_test.py [-t|--type EZ|standard (default)] [-g|--games <# games> (1M default)]. ")
 
 
 #opts = getopt.getopt(sys.argv[1:], "t:", ["type="])
@@ -26,7 +28,7 @@ try:
 	opts, args = getopt.getopt(sys.argv[1:], "g:t:", ["type=", "games="])
 except getopt.GetoptError as err:
 	# print help information and exit:
-	print str(err) # will print something like "option -a not recognized"
+	print(str(err)) # will print something like "option -a not recognized"
 	usage()
 	sys.exit(2)
 
@@ -34,9 +36,9 @@ for o, a in opts:
 	if o in ("-t", "--type"):
 		if (a.lower() == "ez" or a.lower() == "standard"):
 			game_type = a.lower()
-			print "Playing " + a + " style baccarat"
+			print("Playing " + a + " style baccarat")
 		else:
-			print "Unrecognized game type. Only 'EZ' and 'standard' are supported"
+			print("Unrecognized game type. Only 'EZ' and 'standard' are supported")
 	elif o in ("-g", "--games"):
 		no_games = int(a)
 	else:
@@ -178,4 +180,4 @@ for i in range(1, no_games):
 	
 	sys.stdout.write("\033[F") #cursor up one line
 	sys.stdout.write("\033[K") #clear current line
-	print 'Progress %.2f --- Player: %.2f --- Banker %.2f --- Tie %.2f -- Pandas per game %.2f -- Dragons per game %.2f' % ((i / no_games)*100, running_average[0], running_average[1], running_average[2], panda_average, dragon_average)	
+	print('Progress %.2f --- Player: %.2f --- Banker %.2f --- Tie %.2f -- Pandas per game %.2f -- Dragons per game %.2f' % ((i / no_games)*100, running_average[0], running_average[1], running_average[2], panda_average, dragon_average))	
